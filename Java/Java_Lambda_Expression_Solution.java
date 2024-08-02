@@ -21,7 +21,7 @@ class MyMath {
     }
 }
 //Solution Above
-public class Solution {
+public class Java_Lambda_Expression_Solution {
 
  public static void main(String[] args) throws IOException {
   MyMath ob = new MyMath();
