@@ -4,44 +4,31 @@ import java.security.*;
 import java.text.*;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.function.*;
 import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
-import java.time.LocalDate;
-import java.time.*;
-class Result {
-
-    public static String findDay(int month, int day, int year) {
-        
-        LocalDate localDate = LocalDate.of(year, month, day);
-        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
-        
-        return dayOfWeek.toString();
-    }
-
-}
 public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 
-        int month = Integer.parseInt(firstMultipleInput[0]);
 
-        int day = Integer.parseInt(firstMultipleInput[1]);
+    private static final Scanner scanner = new Scanner(System.in);
 
-        int year = Integer.parseInt(firstMultipleInput[2]);
+    public static void main(String[] args) {
+        int N = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        
+        if (N % 2 != 0){
+            System.out.println("Weird");
+        }
+        else if(N % 2 == 0 && N >= 2 && N <= 5 ){
+            System.out.println("Not Weird");
+        }
+        else if(N % 2 == 0 && N >= 6 && N <= 20 ){
+            System.out.println("Weird");
+        }
+        else if (N % 2 == 0 && N >= 20){
+            System.out.println("Not Weird");
+        }
 
-        String res = Result.findDay(month, day, year);
-
-        bufferedWriter.write(res);
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
+        scanner.close();
     }
 }
