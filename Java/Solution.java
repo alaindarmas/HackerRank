@@ -1,34 +1,46 @@
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
-
+import java.security.*;
 public class Solution {
+ public static void main(String[] args) {
 
+  DoNotTerminate.forbidExit();
 
+  try {
+   Scanner in = new Scanner(System.in);
+   int n = in .nextInt();
+   in.close();
+   //String s=???; Complete this line below
 
-    private static final Scanner scanner = new Scanner(System.in);
+   String s = String.valueOf(n);
+   
+   if (n == Integer.parseInt(s)) {
+    System.out.println("Good job");
+   } else {
+    System.out.println("Wrong answer.");
+   }
+  } catch (DoNotTerminate.ExitTrappedException e) {
+   System.out.println("Unsuccessful Termination!!");
+  }
+ }
+}
 
-    public static void main(String[] args) {
-        int N = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-        
-        if (N % 2 != 0){
-            System.out.println("Weird");
-        }
-        else if(N % 2 == 0 && N >= 2 && N <= 5 ){
-            System.out.println("Not Weird");
-        }
-        else if(N % 2 == 0 && N >= 6 && N <= 20 ){
-            System.out.println("Weird");
-        }
-        else if (N % 2 == 0 && N >= 20){
-            System.out.println("Not Weird");
-        }
+//The following class will prevent you from terminating the code using exit(0)!
+class DoNotTerminate {
 
-        scanner.close();
+ public static class ExitTrappedException extends SecurityException {
+
+  private static final long serialVersionUID = 1;
+ }
+
+ public static void forbidExit() {
+  final SecurityManager securityManager = new SecurityManager() {
+   @Override
+   public void checkPermission(Permission permission) {
+    if (permission.getName().contains("exitVM")) {
+     throw new ExitTrappedException();
     }
+   }
+  };
+  System.setSecurityManager(securityManager);
+ }
 }
